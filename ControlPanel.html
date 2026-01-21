@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Control Panel</title>
+    <style>
+    /* Genel sayfa ayarları */
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background: #1e1e2f;
+        color: #f0f0f0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+        margin: 0;
+    }
+
+    /* Container divleri */
+    div {
+        margin: 10px 0;
+        display: flex;
+        flex-direction: column;
+        width: 300px;
+    }
+
+    /* Label tasarımı */
+    label {
+        margin-bottom: 5px;
+        font-weight: 500;
+    }
+
+    /* Input tasarımı */
+    input[type="number"] {
+        padding: 8px 10px;
+        border-radius: 5px;
+        border: 1px solid #555;
+        background: #2a2a3f;
+        color: #f0f0f0;
+        font-size: 14px;
+        transition: border 0.2s, box-shadow 0.2s;
+    }
+
+    input[type="number"]:focus {
+        outline: none;
+        border-color: #6c63ff;
+        box-shadow: 0 0 5px #6c63ff;
+    }
+
+    /* Button tasarımı */
+    button#save {
+        margin-top: 20px;
+        padding: 10px;
+        width: 320px;
+        border: none;
+        border-radius: 5px;
+        background: #6c63ff;
+        color: #fff;
+        font-weight: bold;
+        cursor: pointer;
+        font-size: 16px;
+        transition: background 0.3s, transform 0.1s;
+    }
+
+    button#save:hover {
+        background: #5848c2;
+        transform: scale(1.03);
+    }
+
+    button#save:active {
+        transform: scale(0.98);
+    }
+
+    /* Link tasarımı */
+    a {
+        margin-top: 15px;
+        color: #6c63ff;
+        text-decoration: none;
+        font-size: 14px;
+        transition: color 0.2s;
+    }
+
+    a:hover {
+        color: #fff;
+        text-decoration: underline;
+    }
+</style>
+</head>
+<body>
+    <div>
+        <label>Buffer Size:</label>
+        <input type="number" min="3" max="9" id="buffer_size_" value="5">
+    </div>
+    <div>
+        <label>Base Deadzone:</label>
+        <input type="number" min="20" max="40" id="base_deadzone_" value="25">
+    </div>
+    <div>
+        <label>Max Speed:</label>
+        <input type="number" min="1000" max="90000" id="max_speed_" value="5000">
+    </div>
+    <div>
+        <label>Max Frame Move:</label>
+        <input type="number" min="15" max="250" id="max_frame_move_" value="144">
+    </div>
+    <div>
+        <label>Min Smooth:</label>
+        <input type="number" min="0.02" max="0.7" id="min_smooth_" value="0.06">
+    </div>
+    <div>
+        <label>Max Smooth:</label>
+        <input type="number" min="0.02" max="0.7" id="max_smooth_" value="0.35">
+    </div>
+    <div>
+        <label>Camera FPS:</label>
+        <input type="number" min="10" max="60" id="cam_fps_" value="0.06">
+    </div>
+    <div>
+        <label>Camera no:</label>
+        <input type="number" min="0" max="1" id="cam_num_" value="0">
+    </div>
+    <button id="save">save</button>
+    <a href="https://github.com/Akyuz1/mouse_from_camera.git">Project GitHub Link</a>
+
+    <script>
+    document.getElementById("save").addEventListener("click", function() {
+        const inputs = document.querySelectorAll("input[type='number']");
+        const data = {};
+
+        inputs.forEach(input => {
+            let value = input.value;
+
+            // value tipini float veya int yap
+            if (value.includes(".")) {
+                value = parseFloat(value);
+            } else {
+                value = parseInt(value);
+            }
+
+            // id’yi key olarak ekle
+            data[input.id] = value;
+        });
+
+        // JSON olarak stringle
+        const json = JSON.stringify(data, null, 4);
+
+        // Dosya indir
+        const blob = new Blob([json], {type: "application/json"});
+        const url = URL.createObjectURL(blob);
+
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = "options_save.json";
+        a.click();
+
+        URL.revokeObjectURL(url); // bellek temizle
+    });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,10 @@
+{
+    "buffer_size_": 5,
+    "base_deadzone_": 25,
+    "max_speed_": 5000,
+    "max_frame_move_": 144,
+    "min_smooth_": 0.06,
+    "max_smooth_": 0.35,
+    "cam_fps_": 0.06,
+    "cam_num_": 0
+}
