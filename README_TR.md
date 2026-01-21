@@ -2,7 +2,7 @@
 
 Kamera üzerinden el hareketleriyle mouse kontrolü sağlayan bir Python projesidir.
 ---
-
+ 
 ### Gereksinimler
 - Python 3.11
 - OpenCV
