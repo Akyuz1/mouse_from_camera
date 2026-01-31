@@ -46,6 +46,10 @@ To change settings:
 > 💡 Tip: Keeping your hand steady during scrolling gives a smoother result.
 
 ### ⚠️ Things to Note ⚠️
-> While the project is not yet perfect, there are some speed and lag issues. > Errors such as detecting another object as a hand may occur. > Detection and processing speed will vary depending on your camera's performance. > It also performs poorly in dark environments.
-> If project settings are changed via HTML, this process must be repeated every time the project is started. > For fixed settings, change the variable values ​​in the project code.
+> While the project is not yet perfect, there are some speed and lag issues.
+> Errors such as detecting another object as a hand may occur.
+> Detection and processing speed will vary depending on your camera's performance.
+> It also performs poorly in dark environments.
+> If project settings are changed via HTML, this process must be repeated every time the project is started.
+> For fixed settings, change the variable values ​​in the project code.
 > The **Esc** key terminates the project.
